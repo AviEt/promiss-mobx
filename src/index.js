@@ -1,8 +1,8 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// Relative imports
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import store from './models/PromissStore';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(<App store={store} />, document.getElementById('root'));
