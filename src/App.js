@@ -1,8 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 // Covered in the MobX Section
-import { observer, PropTypes } from 'mobx-react';
+import {observer, PropTypes} from 'mobx-react';
 // Covered in the MobX Section
 import _ from 'lodash';
+// Material UI
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
 
 // Relative imports
 import Promiss from './components/Promiss';
@@ -18,7 +22,7 @@ class App extends PureComponent {
         this.props.store.getPromisses();
     }
 
-    renderSelection(){
+    renderSelection() {
         if (_.isEmpty(this.props.store.selectedPromiss)) return null;
         return (
             <div className='promiss'>
@@ -30,23 +34,37 @@ class App extends PureComponent {
         );
     }
 
-    renderPromisses(){
+    renderPromisses() {
         return this.props.store.promisses.map((promiss) => (
             <Promiss
-                done = {promiss.id === this.props.store.selectedId}
-                key = {promiss.id}
-                name = {promiss.name}
-                onClick = { () => {this.props.store.selectPromiss(promiss)} }
+                done={promiss.id === this.props.store.selectedId}
+                key={promiss.id}
+                name={promiss.name}
+                onClick={ () => {
+                    this.props.store.selectPromiss(promiss)
+                } }
             />
         ));
     }
-    render(){
+
+    render() {
         return (
-            <div>
-                <h3>My Promisses</h3>
-                {this.renderSelection()}
-                {this.renderPromisses()}
-            </div>
+            <MuiThemeProvider>
+                <div>
+                    <span>
+                        <h3>My Promisses</h3>
+
+                    </span>
+                    {this.renderSelection()}
+                    {this.renderPromisses()}
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <FloatingActionButton>
+                    <ContentAdd />
+                </FloatingActionButton>
+            </MuiThemeProvider>
         );
     }
 }
