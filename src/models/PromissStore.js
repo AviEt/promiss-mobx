@@ -43,7 +43,7 @@ class PromissStore {
     }
 }
 
-const store = new PromissStore();
+const promissStore = new PromissStore();
 
-export default store;
+export default promissStore;
 export {PromissStore};

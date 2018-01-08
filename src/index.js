@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // Relative imports
 import App from './App';
-import store from './models/PromissStore';
+import promissStore from './models/PromissStore';
+import addPromissStore from './models/AddPromissStore';
 
-ReactDOM.render(<App store={store} />, document.getElementById('root'));
+ReactDOM.render(<App store={promissStore} addPromissStore={addPromissStore}/>, document.getElementById('root'));

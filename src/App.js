@@ -11,9 +11,11 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 // Relative imports
 import Promiss from './components/Promiss';
 import PromissDetails from './components/PromissDetails';
+import AddPromissDialog from './components/AddPromissDialog';
 
 const propTypes = {
-    store: PropTypes.object
+    store: PropTypes.object,
+    addPromissStore: PropTypes.object
 };
 
 @observer
@@ -32,6 +34,10 @@ class App extends PureComponent {
                 </button>
             </div>
         );
+    }
+
+    handleOpenAddPromissDialog = () => {
+        this.props.addPromissStore.setOpen(true);
     }
 
     renderPromisses() {
@@ -61,9 +67,10 @@ class App extends PureComponent {
                 <br/>
                 <br/>
                 <br/>
-                <FloatingActionButton>
+                <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
                     <ContentAdd />
                 </FloatingActionButton>
+                <AddPromissDialog store={this.props.addPromissStore} open={false}/>
             </MuiThemeProvider>
         );
     }
