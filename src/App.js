@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 // Covered in the MobX Section
-import {observer, PropTypes} from 'mobx-react';
+import {observer} from 'mobx-react';
 // Covered in the MobX Section
 import _ from 'lodash';
 // Material UI
@@ -48,11 +49,11 @@ class App extends PureComponent {
         return this.props.store.promisses.map((promiss) => (
             <Promiss
                 done={promiss.id === this.props.store.selectedId}
-                key={promiss.id}
+                key={promiss.name}
                 name={promiss.name}
-                onClick={ () => {
+                onClick={() => {
                     this.props.store.selectPromiss(promiss)
-                } }
+                }}
             />
         ));
     }
@@ -61,20 +62,23 @@ class App extends PureComponent {
         return (
             <MuiThemeProvider>
                 <div>
+                    <div>
                     <span>
                         <h3>My Promisses</h3>
 
                     </span>
-                    {this.renderSelection()}
-                    {this.renderPromisses()}
+                        {this.renderSelection()}
+                        {this.renderPromisses()}
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
+                        <ContentAdd/>
+                    </FloatingActionButton>
+                    <AddPromissDialog store={this.props.addPromissStore} open={false}
+                                      onClose={this.handleCloseAddPromissDialog} title="bla"/>
                 </div>
-                <br/>
-                <br/>
-                <br/>
-                <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
-                    <ContentAdd />
-                </FloatingActionButton>
-                <AddPromissDialog store={this.props.addPromissStore} open={false} onClose={this.handleCloseAddPromissDialog} title="bla"/>
             </MuiThemeProvider>
         );
     }
