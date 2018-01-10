@@ -40,6 +40,10 @@ class App extends PureComponent {
         this.props.addPromissStore.setOpen(true);
     }
 
+    handleCloseAddPromissDialog = (promiss) => {
+        this.props.store.addPromiss(promiss);
+    }
+
     renderPromisses() {
         return this.props.store.promisses.map((promiss) => (
             <Promiss
@@ -70,7 +74,7 @@ class App extends PureComponent {
                 <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
                     <ContentAdd />
                 </FloatingActionButton>
-                <AddPromissDialog store={this.props.addPromissStore} open={false}/>
+                <AddPromissDialog store={this.props.addPromissStore} open={false} onClose={this.handleCloseAddPromissDialog} title="bla"/>
             </MuiThemeProvider>
         );
     }

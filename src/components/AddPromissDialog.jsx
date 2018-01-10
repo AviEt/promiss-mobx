@@ -2,18 +2,28 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
-import { observer } from 'mobx-react';
+import TextField from 'material-ui/TextField';
+import {observer} from 'mobx-react';
 
 @observer
 export default class AddPromissDialog extends React.Component {
 
-    constructor(store, props) {
+    constructor(props) {
         super(props);
-        this.store = store;
+        this.onClose = props.onClose;
     }
 
     handleClose = () => {
-        this.props.store.setOpen(false)
+        this.props.store.setOpen(false);
+        this.onClose({dueDate: this.props.store.date, name: this.props.store.title, done: false});
+    }
+
+    handleDateChange = (e, date) => {
+        this.props.store.setDate(date);
+    }
+
+    handleTitleChange = (e, title) => {
+        this.props.store.setTitle(title);
     }
 
     render() {
@@ -29,14 +39,13 @@ export default class AddPromissDialog extends React.Component {
         return (
             <div>
                 <Dialog
-                    title="Dialog With Date Picker"
+                    title="Promise something to yourself"
                     actions={actions}
                     modal={false}
                     open={this.props.store.open}
-                    onRequestClose={this.handleClose}
                 >
-                    Open a Date Picker dialog from within a dialog.
-                    <DatePicker hintText="Date Picker" />
+                    <TextField hintText="hint" onChange={this.handleTitleChange}/>
+                    <DatePicker hintText="Due date" onChange={this.handleDateChange}/>
                 </Dialog>
             </div>
         );

@@ -10,7 +10,7 @@ const PromissDetails = ({promissData}) => (
         <h1>{promissData.name}</h1>
         <ul>
             <li>Done: {promissData.done + ""}</li>
-            <li>Due date: {promissData.dueDate}</li>
+            <li>Due date: {promissData.dueDate + ""}</li>
         </ul>
     </div>
 );

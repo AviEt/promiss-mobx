@@ -14,6 +14,11 @@ class PromissStore {
     @action setPromisses = (promisses) => {
         this.promisses = [...promisses];
     }
+
+    @action addPromiss = (promiss) => {
+        this.promisses.push(promiss);
+    }
+
     @action selectPromiss = (promiss) => {
         this.selectedPromiss = promiss;
     }
@@ -21,6 +26,7 @@ class PromissStore {
     @action clearSelectedPromiss = () => {
         this.selectedPromiss = {};
     }
+
     // An example that's a little more complex
     @action getPromisses() {
         this.setPromisses([
