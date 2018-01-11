@@ -8,6 +8,7 @@ import _ from 'lodash';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
+import {List} from 'material-ui/List';
 
 // Relative imports
 import Promiss from './components/Promiss';
@@ -46,16 +47,20 @@ class App extends PureComponent {
     }
 
     renderPromisses() {
-        return this.props.store.promisses.map((promiss) => (
-            <Promiss
-                done={promiss.id === this.props.store.selectedId}
-                key={promiss.name}
-                name={promiss.name}
-                onClick={() => {
-                    this.props.store.selectPromiss(promiss)
-                }}
-            />
-        ));
+        return (
+            <List>
+                {this.props.store.promisses.map((promiss) => (
+                <Promiss
+                    done={promiss.id === this.props.store.selectedId}
+                    key={promiss.name}
+                    name={promiss.name}
+                    onClick={() => {
+                        this.props.store.selectPromiss(promiss)
+                    }}
+                />
+                ))}
+            </List>
+        )
     }
 
     render() {
