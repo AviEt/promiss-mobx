@@ -8,13 +8,14 @@ import _ from 'lodash';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import {List} from 'material-ui/List';
 
 // Relative imports
-import Promiss from './components/Promiss';
 import PromissDetails from './components/PromissDetails';
 import AddPromissDialog from './components/AddPromissDialog';
 import PromissList from "./components/PromissList";
+import Paper from 'material-ui/Paper';
+
+import "./App.css"
 
 const propTypes = {
     store: PropTypes.object,
@@ -51,22 +52,27 @@ class App extends PureComponent {
         return (
             <MuiThemeProvider>
                 <div>
-                    <div>
+                    <div className="content">
+                        <div>
                     <span>
                         <h3>My Promisses</h3>
 
                     </span>
-                        {this.renderSelection()}
-                        <PromissList promisses={this.props.store.promisses} onClick={this.props.store.selectPromiss}/>
+                            {this.renderSelection()}
+                            <Paper>
+                                <PromissList promisses={this.props.store.promisses}
+                                             onClick={this.props.store.selectPromiss}/>
+                            </Paper>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
+                            <ContentAdd/>
+                        </FloatingActionButton>
+                        <AddPromissDialog store={this.props.addPromissStore} open={false}
+                                          onClose={this.handleCloseAddPromissDialog} title="bla"/>
                     </div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
-                        <ContentAdd/>
-                    </FloatingActionButton>
-                    <AddPromissDialog store={this.props.addPromissStore} open={false}
-                                      onClose={this.handleCloseAddPromissDialog} title="bla"/>
                 </div>
             </MuiThemeProvider>
         );
