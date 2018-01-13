@@ -14,6 +14,7 @@ import {List} from 'material-ui/List';
 import Promiss from './components/Promiss';
 import PromissDetails from './components/PromissDetails';
 import AddPromissDialog from './components/AddPromissDialog';
+import PromissList from "./components/PromissList";
 
 const propTypes = {
     store: PropTypes.object,
@@ -46,23 +47,6 @@ class App extends PureComponent {
         this.props.store.addPromiss(promiss);
     }
 
-    renderPromisses() {
-        return (
-            <List>
-                {this.props.store.promisses.map((promiss) => (
-                <Promiss
-                    done={promiss.id === this.props.store.selectedId}
-                    key={promiss.name}
-                    name={promiss.name}
-                    onClick={() => {
-                        this.props.store.selectPromiss(promiss)
-                    }}
-                />
-                ))}
-            </List>
-        )
-    }
-
     render() {
         return (
             <MuiThemeProvider>
@@ -73,7 +57,7 @@ class App extends PureComponent {
 
                     </span>
                         {this.renderSelection()}
-                        {this.renderPromisses()}
+                        <PromissList promisses={this.props.store.promisses} onClick={this.props.store.selectPromiss}/>
                     </div>
                     <br/>
                     <br/>

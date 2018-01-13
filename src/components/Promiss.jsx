@@ -12,14 +12,10 @@ const propTypes = {
 
 @observer
 class Promiss extends React.Component {
-
-    constructor(props, name, onClick) {
-        super(props);
-    }
-
     render() {
+        const { onClick, name } = this.props;
         return (
-            <ListItem onClick={this.props.onClick} primaryText={this.props.name}/>
+            <ListItem onClick={onClick} primaryText={name}/>
         );
     }
 }
