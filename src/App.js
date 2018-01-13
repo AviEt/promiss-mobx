@@ -14,6 +14,7 @@ import PromissDetails from './components/PromissDetails';
 import AddPromissDialog from './components/AddPromissDialog';
 import PromissList from "./components/PromissList";
 import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 
 import "./App.css"
 
@@ -52,12 +53,10 @@ class App extends React.Component {
         return (
             <MuiThemeProvider>
                 <div>
+                    <AppBar
+                        title="My Promisses"/>
                     <div className="content">
                         <div>
-                    <span>
-                        <h3>My Promisses</h3>
-
-                    </span>
                             {this.renderSelection()}
                             <Paper>
                                 <PromissList promisses={this.props.store.promisses}
