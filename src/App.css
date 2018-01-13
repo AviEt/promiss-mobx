@@ -1,5 +1,14 @@
 .content {
   margin-left: 10%;
   margin-right: 10%;
+
+}
+
+.add-promiss-button {
   display: block;
+  position: fixed;
+  margin-bottom: 40px;
+  margin-right: 40px;
+  bottom: 0;
+  right: 0;
 }

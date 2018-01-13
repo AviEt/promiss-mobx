@@ -67,7 +67,7 @@ class App extends PureComponent {
                         <br/>
                         <br/>
                         <br/>
-                        <FloatingActionButton onClick={this.handleOpenAddPromissDialog}>
+                        <FloatingActionButton onClick={this.handleOpenAddPromissDialog} className="add-promiss-button">
                             <ContentAdd/>
                         </FloatingActionButton>
                         <AddPromissDialog store={this.props.addPromissStore} open={false}
