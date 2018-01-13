@@ -45,6 +45,21 @@ class PromissStore {
                 done: true,
                 dueDate: "14-05-2018"
             },
+            {
+                name: "Promiss4",
+                done: true,
+                dueDate: "14-05-2018"
+            },
+            {
+                name: "Promiss5",
+                done: true,
+                dueDate: "14-05-2018"
+            },
+            {
+                name: "Promiss6",
+                done: true,
+                dueDate: "14-05-2018"
+            },
         ])
     }
 }

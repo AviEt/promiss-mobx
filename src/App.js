@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 // Covered in the MobX Section
 import {observer} from 'mobx-react';
@@ -23,7 +23,7 @@ const propTypes = {
 };
 
 @observer
-class App extends PureComponent {
+class App extends React.Component {
     componentWillMount() {
         this.props.store.getPromisses();
     }
