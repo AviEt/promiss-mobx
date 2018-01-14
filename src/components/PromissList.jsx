@@ -5,8 +5,8 @@ import {List} from 'material-ui/List';
 import {PropTypes as MobxPropTypes} from 'mobx-react';
 
 const propTypes = {
-    promisses: MobxPropTypes.ObservableArray,
-    onClick: PropTypes.function
+    promisses: MobxPropTypes.observableArray,
+    onClick: PropTypes.func
 };
 
 const PromissList = ({promisses, onClick}) =>(
