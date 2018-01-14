@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ListItem} from 'material-ui/List';
 import {observer} from "mobx-react/index";
+
+import ExpansionPanel, {
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+} from 'material-ui-next/ExpansionPanel';
+
+import Typography from 'material-ui-next/Typography';
 
 const propTypes = {
     onClick: PropTypes.func,
@@ -13,9 +19,19 @@ const propTypes = {
 @observer
 class Promiss extends React.Component {
     render() {
-        const { onClick, name } = this.props;
+        const { onClick, dueDate, name } = this.props;
         return (
-            <ListItem onClick={onClick} primaryText={name}/>
+            <ExpansionPanel>
+                <ExpansionPanelSummary >
+                    <Typography>{name}</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <Typography>
+                        {dueDate}
+                    </Typography>
+                </ExpansionPanelDetails>
+            {/*<ListItem onClick={onClick} primaryText={name}/>*/}
+            </ExpansionPanel>
         );
     }
 }
