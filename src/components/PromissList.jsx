@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import Promiss from './Promiss'
 import {List} from 'material-ui/List';
 import {PropTypes as MobxPropTypes} from 'mobx-react';
+import {observer} from 'mobx-react';
 
 const propTypes = {
     promisses: MobxPropTypes.observableArray,
     onClick: PropTypes.func
 };
 
-const PromissList = ({promisses, onClick}) =>(
+const PromissList = observer(({promisses, onClick}) =>(
         <List>
             {promisses.map((promiss) => (
                 <Promiss
@@ -20,7 +21,7 @@ const PromissList = ({promisses, onClick}) =>(
                     }}
                 />
             ))}
-        </List>);
+        </List>));
 
 
 PromissList.propTypes = propTypes;
