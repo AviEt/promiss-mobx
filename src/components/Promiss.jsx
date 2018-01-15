@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {observer} from "mobx-react/index";
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
 import ExpansionPanel, {
     ExpansionPanelSummary,
@@ -22,7 +23,7 @@ class Promiss extends React.Component {
         const { onClick, dueDate, name } = this.props;
         return (
             <ExpansionPanel>
-                <ExpansionPanelSummary >
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography>{name}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
