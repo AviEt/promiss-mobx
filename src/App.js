@@ -69,7 +69,7 @@ class App extends React.Component {
                         <FloatingActionButton onClick={this.handleOpenAddPromissDialog} className="add-promiss-button">
                             <ContentAdd/>
                         </FloatingActionButton>
-                        <AddPromissDialog store={this.props.addPromissStore} open={false}
+                        <AddPromissDialog store={this.props.addPromissStore} promissChipStore={this.props.promissChipStore} open={false}
                                           onClose={this.handleCloseAddPromissDialog} title="bla"/>
                     </div>
                 </div>

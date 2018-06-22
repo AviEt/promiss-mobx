@@ -3,6 +3,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
+import TagsAutoCompleteInput from './TagsAutoCompleteInput'
+
 import {observer} from 'mobx-react';
 
 @observer
@@ -27,14 +29,7 @@ export default class AddPromissDialog extends React.Component {
     }
 
     render() {
-        const actions = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                onClick={this.handleClose}
-            />,
-        ];
+        const actions = this.actions();
 
         return (
             <div>
@@ -46,8 +41,23 @@ export default class AddPromissDialog extends React.Component {
                 >
                     <TextField hintText="hint" onChange={this.handleTitleChange}/>
                     <DatePicker hintText="Due date" onChange={this.handleDateChange}/>
+                    <TagsAutoCompleteInput chips={this.props.promissChipStore.chips}/>
                 </Dialog>
             </div>
         );
+    }
+
+
+
+    actions = () => {
+        const actions = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.handleClose}
+            />,
+        ];
+        return actions;
     }
 }

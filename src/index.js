@@ -5,5 +5,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import promissStore from './models/PromissStore';
 import addPromissStore from './models/AddPromissStore';
+import promissChipStore from './models/PromissChipStore';
 
-ReactDOM.render(<App store={promissStore} addPromissStore={addPromissStore}/>, document.getElementById('root'));
+ReactDOM.render(<App store={promissStore}
+                     addPromissStore={addPromissStore}
+                     promissChipStore={promissChipStore}/>,
+                document.getElementById('root'));
